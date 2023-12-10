@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/app/public/
+RewriteRule ^(.*)$ /app/public/$1 [L,QSA]
+
+
+#Con questo set di regole:
+
+#RewriteEngine On abilita il motore di riscrittura.
+#RewriteCond %{REQUEST_URI} !^/app/public/ verifica se la richiesta non inizia già con "/app/public/" per evitare un loop infinito.
+#RewriteRule ^(.*)$ /app/public/$1 [L,QSA] riscrive tutte le richieste, aggiungendo "/app/public/" prima del percorso richiesto. La flag [L,QSA] indica di fermarsi dopo #questa regola e di aggiungere eventuali stringhe di query.
+#Assicurati che il tuo file .htaccess si trovi nella directory principale del tuo sito, e che il modulo di riscrittura di Apache sia abilitato. Inoltre, verifica che le #impostazioni di AllowOverride nel tuo file di configurazione Apache consentano l'utilizzo delle direttive .htaccess.
