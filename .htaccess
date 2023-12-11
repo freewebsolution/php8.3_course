@@ -1,8 +1,17 @@
 RewriteEngine On
+
+# Se la richiesta non è per /app/public/ riscrivi l'URL
 RewriteCond %{REQUEST_URI} !^/app/public/
 RewriteRule ^(.*)$ /app/public/$1 [L,QSA]
+
+# Aggiungi l'estensione .php se il file .php esiste
+RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# Aggiungi l'estensione .html se il file .html esiste
+RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
 
 
 #Con questo set di regole:
